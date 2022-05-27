@@ -1,7 +1,7 @@
 <template>
   <div class="menu-wrapper">
     <mt-cell v-for="item in list" :key="item.id">
-      {{ item.token }}：{{ item.message }}
+      {{ item.nickName }}：{{ item.message }}
     </mt-cell>
   </div>
 </template>

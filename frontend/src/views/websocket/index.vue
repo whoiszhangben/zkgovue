@@ -12,15 +12,17 @@
 </template>
 
 <script>
-import { Field, Button, Header } from "mint-ui";
+import { Field, Button, Header,MessageBox } from "mint-ui";
 import config from "@/config/index";
 import EventBus from "@/events/event-bus.js";
 import MessageLog from "./messageLog";
+import store from "@/store";
 export default {
   name: "websocket",
   data() {
     return {
       token: "",
+      nickName: "",
       wenzi_message_websocket: undefined,
       message: "",
     };
@@ -43,7 +45,11 @@ export default {
     this.destroyEvent();
   },
   mounted() {
-    
+    if (!store.getters.nickName) {
+      MessageBox.prompt("欢迎来畅聊，请输入昵称").then(({ value, action }) => {
+        this.nickName = value;
+      })
+    }
   },
   methods: {
     heartBeat() {
@@ -71,11 +77,13 @@ export default {
       EventBus.$emit("send-message", {
         action: "sendMessage",
         token: this.$store.getters.token,
+        nickName: this.nickName,
         message: this.message,
       });
       this.message = "";
     },
     connect() {
+      let self = this;
       // 参考链接：swoole 快速起步 swoole 部分： https://wiki.swoole.com/wiki/page/479.html
       if (window.wenzi_message_websocket) {
         this.wenzi_message_websocket = window.wenzi_message_websocket;
@@ -113,6 +121,7 @@ export default {
         if (res.action === "replyMessage") {
           EventBus.$emit("add-message", {
             token: res.data.token,
+            nickName: res.data.nickName,
             message: res.data.message,
           });
         }

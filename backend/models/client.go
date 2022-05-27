@@ -84,6 +84,7 @@ func (c *Client) WritePump() {
 					} else {
 						sendMessage.Data.Token = token
 					}
+					sendMessage.Data.NickName = receiveMessage.NickName
 					sendMessage.Action = receiveMessage.Action
 					beego.Info("建立链接：" + token)
 
@@ -91,6 +92,7 @@ func (c *Client) WritePump() {
 					sendMessage.Action = "replyMessage"
 					sendMessage.Data.Token = receiveMessage.Token
 					sendMessage.Data.Message = receiveMessage.Message
+					sendMessage.Data.NickName = receiveMessage.NickName
 					beego.Info("send to " + sendMessage.Data.Token + ":", sendMessage)
 
 				// 返回心跳

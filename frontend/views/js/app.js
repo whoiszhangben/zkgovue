@@ -350,7 +350,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var core
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar getters = {\n  token: function token(state) {\n    return state.user.token;\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (getters);\n\n//# sourceURL=webpack:///./src/store/getters.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar getters = {\n  token: function token(state) {\n    return state.user.token;\n  },\n  nickName: function nickName(state) {\n    return state.user.nickName;\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (getters);\n\n//# sourceURL=webpack:///./src/store/getters.js?");
 
 /***/ }),
 
@@ -386,7 +386,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nvar app = {\n  state: {},\n  
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar user = {\n  state: {\n    token: ''\n  },\n  mutations: {\n    SET_TOKEN: function SET_TOKEN(state, data) {\n      state.token = data.token;\n    }\n  },\n  actions: {\n    modifyToken: function modifyToken(_ref, token) {\n      var commit = _ref.commit;\n      commit('SET_TOKEN', {\n        token: token\n      });\n    }\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (user);\n\n//# sourceURL=webpack:///./src/store/modules/user.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar user = {\n  state: {\n    token: '',\n    nickName: ''\n  },\n  mutations: {\n    SET_TOKEN: function SET_TOKEN(state, data) {\n      state.token = data.token;\n    },\n    SET_NICKNAME: function SET_NICKNAME(state, data) {\n      state.nickName = data;\n    }\n  },\n  actions: {\n    modifyToken: function modifyToken(_ref, token) {\n      var commit = _ref.commit;\n      commit('SET_TOKEN', {\n        token: token\n      });\n    },\n    modifyName: function modifyName(_ref2, nickName) {\n      var commit = _ref2.commit;\n      commit('SET_NICKNAME', {\n        nickName: nickName\n      });\n    }\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (user);\n\n//# sourceURL=webpack:///./src/store/modules/user.js?");
 
 /***/ }),
 

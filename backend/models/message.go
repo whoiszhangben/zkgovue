@@ -4,6 +4,7 @@ package models
 type ReceiveMessage struct {
 	Action   string    `json:"action"`
 	Token    string    `json:"token"`
+	NickName	string		`json:"nickName"`
 	Message    string    `json:"message"`
 }
 
@@ -15,6 +16,7 @@ type SendMessage struct {
 
 type MessageDetail struct {
 	Token    string    `json:"token"`
+	NickName	string		`json:"nickName"`
 	Message    string    `json:"message"`
 }
 
