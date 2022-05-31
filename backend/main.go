@@ -34,6 +34,7 @@ func main() {
 
 	dsn := beego.AppConfig.String("dsn")
 	dedsn, errd := base.DecodeDsn(dsn)
+	fmt.Println(dedsn);
 	if errd != nil {
 		Logs.Error("decode: dsn failed! %s\n", errd)
 		return

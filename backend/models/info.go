@@ -47,7 +47,7 @@ func init() {
 func AddInfo(info Info) error {
 	var o orm.Ormer
 	o = orm.NewOrm()
-	o.Using("browser")
+	o.Using("ben")
 	_, err := o.Insert(&info)
 	return err
 }
@@ -56,7 +56,7 @@ func AddInfo(info Info) error {
 func GetAllUsers() PackInfo {
 	var o orm.Ormer
 	o = orm.NewOrm()
-	o.Using("browser")
+	o.Using("ben")
 	var rtos []Info
 	var sql string = "select id, appname, language, platform from info"
 	_, err := o.Raw(sql).QueryRows(&rtos)
@@ -75,7 +75,7 @@ func GetAllUsers() PackInfo {
 func GetAllList() []Info {
 	var o orm.Ormer
 	o = orm.NewOrm()
-	o.Using("browser")
+	o.Using("ben")
 	var rtos []Info
 	var sql string = "select id, appname, language, platform from info"
 	_, err := o.Raw(sql).QueryRows(&rtos)
@@ -89,7 +89,7 @@ func GetAllList() []Info {
 func GetListByParams(pageIndex string, pageSize string) PackInfo {
 	var o orm.Ormer
 	o = orm.NewOrm()
-	o.Using("browser")
+	o.Using("ben")
 	intIndex, err := strconv.Atoi(pageIndex)
 	if err != nil {
 		p := PackInfo{}
