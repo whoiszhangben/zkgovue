@@ -32,9 +32,14 @@ func main() {
 	ver := beego.AppConfig.String("version")
 	Logs.Info("version %s\n", ver)
 
+	appSecret := "72c02927220db6980226c6f9b4001d90"
+	encryptSecret, errd := base.EncodeDsn(appSecret)
+
+	fmt.Println("加密后的appSecret:", encryptSecret)
+
 	dsn := beego.AppConfig.String("dsn")
 	dedsn, errd := base.DecodeDsn(dsn)
-	fmt.Println(dedsn);
+	fmt.Println(dedsn)
 	if errd != nil {
 		Logs.Error("decode: dsn failed! %s\n", errd)
 		return

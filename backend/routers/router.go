@@ -13,14 +13,22 @@ func init() {
 			beego.NSInclude(
 				&controllers.InfoController{},
 			)),
-		// beego.NSNamespace("/websocket",
-		// 	beego.NSInclude(
-		// 		&controllers.WebsocketController{},
-		// 	)),
+		beego.NSNamespace("/valid",
+			beego.NSInclude(
+				&controllers.ValidWechatController{},
+			)),
 		beego.NSNamespace("/upload",
 			beego.NSInclude(
 				&controllers.UploadController{},
 			)))
+	ts := beego.NewNamespace("/api",
+		beego.NSNamespace("/valid",
+			beego.NSInclude(
+				&controllers.ValidWechatController{},
+			)))
 	beego.AddNamespace(ns)
+	beego.AddNamespace(ts)
 	beego.Router("/api/websocket", &controllers.WebsocketController{})
+	beego.Router("/api/callback", &controllers.CallbackController{})
+	beego.Router("/api/redirect", &controllers.RedirectController{})
 }
